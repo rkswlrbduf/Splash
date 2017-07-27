@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Splash</string>
+    <string name="kakao_app_key">0c6da85c359c3c5c479a25a27c4541fc</string>
+    <string name="facebook_app_id">126922104584519</string>
+    <string name="fb_login_protocol_scheme">fb126922104584519</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">h3fIwmtwtGVfb9KPOHOr4O2rS</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">bfxbYWaOT4KLxoSBxezLhFlbW7TQtAnxChE8VJacSBE4zLB6RG</string>
+</resources>

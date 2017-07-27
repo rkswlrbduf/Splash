@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/kakao_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:layout_below="@+id/kakao_login"
+        android:id="@+id/facebook_login"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="match_parent"
+        android:id="@+id/google_login"
+        android:layout_below="@+id/facebook_login"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logOut"/>
+
+</RelativeLayout>

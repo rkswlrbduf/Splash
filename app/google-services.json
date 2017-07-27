@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "427519608475",
+    "firebase_url": "https://sdmcammi.firebaseio.com",
+    "project_id": "sdmcammi",
+    "storage_bucket": "sdmcammi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427519608475:android:77734e302dd326bf",
+        "android_client_info": {
+          "package_name": "samsung.membership.splash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427519608475-9vf1984bv2hh95lep0mnlsri8ie72mat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "samsung.membership.splash",
+            "certificate_hash": "0488afb7e31aa861fd224853c0f5018b0c1ecca7"
+          }
+        },
+        {
+          "client_id": "427519608475-hs7rfjr62b5t2rpfvt7v54miq7a38res.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9rrdonov_rOGyDGTzT0krrSK4MKtJkzQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427519608475-hs7rfjr62b5t2rpfvt7v54miq7a38res.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
