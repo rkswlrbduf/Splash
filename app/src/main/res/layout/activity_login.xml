@@ -1,34 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.kakao.usermgmt.LoginButton
-        android:id="@+id/kakao_login"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.facebook.login.widget.LoginButton
-        android:layout_below="@+id/kakao_login"
-        android:id="@+id/facebook_login"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="30dp"
-        android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="match_parent"
-        android:id="@+id/google_login"
-        android:layout_below="@+id/facebook_login"
-        android:layout_height="wrap_content"/>
+            <com.kakao.usermgmt.LoginButton
+                android:id="@+id/kakao_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/logOut"/>
+            <ImageView
+                android:id="@+id/fake_kakao"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/kakao"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="70dp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/facebook_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kakao_login"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/fake_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/facebook" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/google_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/facebook_login"
+                android:layout_margin="20dp"
+                app:buttonSize="wide" />
+
+            <ImageView
+                android:id="@+id/fake_google"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/google" />
+        </FrameLayout>
+    </LinearLayout>
 
 </RelativeLayout>

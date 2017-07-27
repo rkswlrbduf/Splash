@@ -1,12 +1,10 @@
 package samsung.membership.splash;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.AccessToken;
-import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -22,11 +20,10 @@ import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -41,25 +38,54 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
-
-    private Button button;
-
-
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
 
     private static final int RC_SIGN_IN = 9001;
     private SessionCallback callback;      //콜백 선언
     private CallbackManager callbackManager;
-    private LoginButton facebookLoginButton;
     private GoogleApiClient mGoogleApiClient;
     private ProgressDialog mProgressDialog;
 
+    private ImageView fakeKakao;
+    private ImageView fakeFacebook;
+    private ImageView fakeGoogle;
+
+    private com.kakao.usermgmt.LoginButton kakaoLogin;
+    private LoginButton facebookLogin;
+    private SignInButton googleLogin;
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fake_kakao:
+                kakaoLogin.performClick();
+                break;
+            case R.id.fake_facebook:
+                facebookLogin.performClick();
+                break;
+            case R.id.fake_google:
+                signIn();
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_login);
+
+        fakeKakao = (ImageView)findViewById(R.id.fake_kakao);
+        fakeFacebook = (ImageView)findViewById(R.id.fake_facebook);
+        fakeGoogle = (ImageView)findViewById(R.id.fake_google);
+
+        fakeKakao.setOnClickListener(this);
+        fakeFacebook.setOnClickListener(this);
+        fakeGoogle.setOnClickListener(this);
+
+        kakaoLogin = (com.kakao.usermgmt.LoginButton)findViewById(R.id.kakao_login);
+        googleLogin = (SignInButton)findViewById(R.id.google_login);
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
@@ -77,17 +103,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         callbackManager = CallbackManager.Factory.create();
 
-        facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login);
-        facebookLoginButton.setReadPermissions(Arrays.asList("public_profile", "email"));
-        facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        facebookLogin = (LoginButton) findViewById(R.id.facebook_login);
+        facebookLogin.setReadPermissions(Arrays.asList("public_profile", "email"));
+        facebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         Log.d("result", object.toString());
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        LoginActivity.this.finish();
+                        redirectMainActivity();
                     }
                 });
 
@@ -111,10 +136,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
-        SignInButton signInButton = (SignInButton)findViewById(R.id.google_login);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setScopes(gso.getScopeArray());
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        googleLogin.setSize(SignInButton.SIZE_STANDARD);
+        googleLogin.setScopes(gso.getScopeArray());
+        googleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
