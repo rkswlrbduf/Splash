@@ -5,4 +5,6 @@
     <string name="fb_login_protocol_scheme">fb126922104584519</string>
     <string name="com.twitter.sdk.android.CONSUMER_KEY">h3fIwmtwtGVfb9KPOHOr4O2rS</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">bfxbYWaOT4KLxoSBxezLhFlbW7TQtAnxChE8VJacSBE4zLB6RG</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
 </resources>
