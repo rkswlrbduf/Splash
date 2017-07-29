@@ -25,7 +25,8 @@
             android:theme="@style/NoAction"/>
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".AddActivity"/>
+        <activity android:name=".AddActivity"
+            android:theme="@style/NoAction"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
